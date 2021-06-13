@@ -1,2 +1,4 @@
 gc_env/
-/scribble.py
+__pycache__/
+scribble.py
+.env
