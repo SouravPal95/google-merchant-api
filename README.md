@@ -2,7 +2,7 @@
 
 A stateless rest API for interacting with a google merchant account using OAuth.
 
-# Environment setup.
+# Environment setup:
 
 Run the following piece of code in a bash shell:
 
