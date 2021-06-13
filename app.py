@@ -58,12 +58,11 @@ class ListProducts(Resource):
         }
            
         credentials=Credentials(**credentials)
-        service=build('content', 'v2.1',
-                      credentials=credentials)
-        products=service.products()
-        request_=products.list(merchantId=merch_id)
-        response=request_.execute()
-        service.close()
+        with build('content', 'v2.1',
+                      credentials=credentials) as service:
+            products=service.products()
+            request_=products.list(merchantId=merch_id)
+            response=request_.execute()
         
         return jsonify(response)
 
@@ -108,7 +107,6 @@ class Product(Resource):
         }
         credentials=Credentials(**credentials)
         product=request.get_json()
-        #product=DUMMY_DATA
         with build('content', 'v2.1', credentials=credentials) as service:
             products=service.products()
             request_=products.insert(merchantId=merch_id, body=product)
@@ -163,14 +161,6 @@ class Product(Resource):
             response=request_.execute()
         
         return jsonify(response) 
-
-@app.route('/')
-def index():
-    return jsonify({
-        "Message":"Welcome to my demo"
-    })
-
-
     
 @app.route('/authorize2')
 def authorize2():
@@ -187,21 +177,15 @@ def authorize2():
     )
     
     session['state']=state
-    print(f"state from authorize: {session['state']}")
-    return {'url':authorization_url,
-            'state':session['state']}
-    #return redirect(authorization_url)
+    return redirect(authorization_url)
 
 @app.route('/oauth2callback')
 def oauth2callback():
     
-    state=session['state']
-    #state=request.headers.get('state')
-    print(f'state from callback: {state}')
     flow=Flow.from_client_secrets_file(
         'client_secrets_web.json',
         scopes=['https://www.googleapis.com/auth/content'],
-        state=state,
+        state=session['state'],
         redirect_uri=url_for('oauth2callback', _external=True)
     )
     authorization_resp=request.url
