@@ -1,18 +1,13 @@
-
-from itertools import product
-from google.oauth2 import credentials
-
 from google_auth_oauthlib.flow import Flow, InstalledAppFlow
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
-from flask import Flask, redirect, url_for, session, jsonify
-from flask.globals import request
+from flask import Flask, redirect, url_for, session, jsonify, request
 from flask_restful import Resource, Api
-#from flask_cors import CORS
+from flask_cors import CORS
 
 app=Flask(__name__)
-#cors=CORS(app)
+cors=CORS(app)
 api=Api(app)
 
 app.config['SECRET_KEY']="23e01632e0d475932a8ecc3b1177bc574f9e0adbb9efd19f76f76b4faa860f20"
