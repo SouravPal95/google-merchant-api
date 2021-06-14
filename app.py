@@ -174,12 +174,10 @@ class Authorize(Resource):
                                 _external=True),
             state=merchant_id
         )
-        authorization_url, state=flow.authorization_url(
+        authorization_url, _=flow.authorization_url(
             access_type="offline",
             include_granted_scopes='true'
         )
-        print(f"state from authorize2: {state}")
-        session['state']=state
         
         merchant=Credential(merchant_id=merchant_id)
         db.session.add(merchant)
