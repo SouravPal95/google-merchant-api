@@ -18,6 +18,10 @@ $ pip install -r requirements.txt
 $ flask run
 ```
 
+# Generating Credentials:
+
+It is crucial to generate fresh oAuth2 credentials for desktop or webapp from google api console. The generated credentials download the credentials as `client_secrets_desk.json` or  `client_secrets_web.json` based on the app type.
+
 # Making the api calls:
 
 There are three resources namely:
