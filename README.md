@@ -22,7 +22,7 @@ $ flask run
 
 # Generating Credentials:
 
-It is crucial to generate fresh oAuth2 credentials for desktop or webapp from google api console. The generated credentials download the credentials as `client_secrets_desk.json` or  `client_secrets_web.json` based on the app type.
+It is crucial to generate fresh oAuth2 credentials for `"App-Type":"Web-Application"` from google api console. The generated credentials are downloaded as  `client_secrets_web.json`.
 
 # Making the api calls:
 
@@ -32,4 +32,4 @@ Authorize
 ListProducts
 Products
 ```
-At first, a get request to the `Authorize` resource is made to acquire access and refresh tokens along with other credentials in JSON format. For every other request to the remaining two resources, this credential is be passed on in the header. A postman collection has been included in the repository named `google content api.postman_collection.json`
+At first, a `GET` request to the `Authorize` resource is made to initiate OAuth2.0 and acquire access and refresh tokens which are programmatically stored in a sql/nosql database. A postman collection has been included in the repository named `google content api.postman_collection.json`.
