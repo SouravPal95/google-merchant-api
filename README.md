@@ -1,6 +1,6 @@
 # Description:
 
-A stateless rest API for interacting with a google merchant account using OAuth.
+A stateless rest API for interacting with a google merchant account using OAuth Authentication. 
 
 # Environment setup:
 
