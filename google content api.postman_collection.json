@@ -6,60 +6,38 @@
 	},
 	"item": [
 		{
-			"name": "authorize",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://127.0.0.1:5000/authorize",
-					"protocol": "http",
-					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
-					],
-					"port": "5000",
-					"path": [
-						"authorize"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "ListProducts",
 			"request": {
 				"method": "GET",
 				"header": [
 					{
-						"key": "token",
-						"value": "ya29.a0AfH6SMDnrJIvtuUQQfvuh7eZtXPbxue1zs62dpAa5PvH1jRbF19697PWZ2NAzQSnJWg2PhfqN7bBcS-Bmn6DqXD1C-FmndKG7JOenItQaLazL4ctQIgYMDGRq9p3lAfLqjee3GUAUFNvwnvM9jtSdE91fVLl",
-						"type": "text"
-					},
-					{
-						"key": "refresh_token",
-						"value": " 1//0gx_1Vv_umNCvCgYIARAAGBASNwF-L9IrneUTyzxOD5qBkJDsQ9-VrZOiY--Z0LI1RfTRVvnf7B1-TD1crv_-tixub72AMPlDN2A",
-						"type": "text"
-					},
-					{
-						"key": "token_uri",
-						"value": "https://oauth2.googleapis.com/token",
-						"type": "text"
-					},
-					{
 						"key": "client_id",
-						"value": "1092016066629-6jdh1fseu4dh5ujid0iis6soob9ep99m.apps.googleusercontent.com",
+						"value": "1092016066629-r8maka40hpbpelillfnoiq8r997ot2o7.apps.googleusercontent.com ",
 						"type": "text"
 					},
 					{
 						"key": "client_secret",
-						"value": "aXCkfQ-2rE4nsR9vZn4Dj-gX",
+						"value": "nAadNvVsVH-NvwFMguWbzz-I",
+						"type": "text"
+					},
+					{
+						"key": "refresh_token",
+						"value": "1//0gan7qUat5M4ICgYIARAAGBASNwF-L9Irnb_05BxCltsRxsaG-ySVYJFpRjJ_zFKNNSVTXJ_WHY4n4oNwSxFt3WvlweewFJBa754",
 						"type": "text"
 					},
 					{
 						"key": "scopes",
 						"value": "https://www.googleapis.com/auth/content",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "ya29.a0AfH6SMBZVZXCNeGuuQAPkblUUrJu28Ngea9XB3HxY43iOO7RRFa612XnjvUoVhLVHrWZwZAIroF-dVb4KMJUwfRnFX0SmQFD4xib58LnFFUcxc4mmDh5LkgBFjDqP3Zd851_K79vBpfQTbEWo0kCyW9jRT4o ",
+						"type": "text"
+					},
+					{
+						"key": "token_uri",
+						"value": "https://oauth2.googleapis.com/token",
 						"type": "text"
 					}
 				],
@@ -88,33 +66,33 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "token",
-						"value": "ya29.a0AfH6SMDnrJIvtuUQQfvuh7eZtXPbxue1zs62dpAa5PvH1jRbF19697PWZ2NAzQSnJWg2PhfqN7bBcS-Bmn6DqXD1C-FmndKG7JOenItQaLazL4ctQIgYMDGRq9p3lAfLqjee3GUAUFNvwnvM9jtSdE91fVLl",
-						"type": "text"
-					},
-					{
-						"key": "refresh_token",
-						"value": " 1//0gx_1Vv_umNCvCgYIARAAGBASNwF-L9IrneUTyzxOD5qBkJDsQ9-VrZOiY--Z0LI1RfTRVvnf7B1-TD1crv_-tixub72AMPlDN2A",
-						"type": "text"
-					},
-					{
-						"key": "token_uri",
-						"value": "https://oauth2.googleapis.com/token",
-						"type": "text"
-					},
-					{
 						"key": "client_id",
-						"value": "1092016066629-6jdh1fseu4dh5ujid0iis6soob9ep99m.apps.googleusercontent.com",
+						"value": "1092016066629-r8maka40hpbpelillfnoiq8r997ot2o7.apps.googleusercontent.com ",
 						"type": "text"
 					},
 					{
 						"key": "client_secret",
-						"value": "aXCkfQ-2rE4nsR9vZn4Dj-gX",
+						"value": "nAadNvVsVH-NvwFMguWbzz-I",
+						"type": "text"
+					},
+					{
+						"key": "refresh_token",
+						"value": "1//0gan7qUat5M4ICgYIARAAGBASNwF-L9Irnb_05BxCltsRxsaG-ySVYJFpRjJ_zFKNNSVTXJ_WHY4n4oNwSxFt3WvlweewFJBa754",
 						"type": "text"
 					},
 					{
 						"key": "scopes",
 						"value": "https://www.googleapis.com/auth/content",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "ya29.a0AfH6SMBZVZXCNeGuuQAPkblUUrJu28Ngea9XB3HxY43iOO7RRFa612XnjvUoVhLVHrWZwZAIroF-dVb4KMJUwfRnFX0SmQFD4xib58LnFFUcxc4mmDh5LkgBFjDqP3Zd851_K79vBpfQTbEWo0kCyW9jRT4o ",
+						"type": "text"
+					},
+					{
+						"key": "token_uri",
+						"value": "https://oauth2.googleapis.com/token",
 						"type": "text"
 					}
 				],
@@ -152,33 +130,33 @@
 				"method": "GET",
 				"header": [
 					{
-						"key": "token",
-						"value": "ya29.a0AfH6SMDnrJIvtuUQQfvuh7eZtXPbxue1zs62dpAa5PvH1jRbF19697PWZ2NAzQSnJWg2PhfqN7bBcS-Bmn6DqXD1C-FmndKG7JOenItQaLazL4ctQIgYMDGRq9p3lAfLqjee3GUAUFNvwnvM9jtSdE91fVLl",
-						"type": "text"
-					},
-					{
-						"key": "refresh_token",
-						"value": " 1//0gx_1Vv_umNCvCgYIARAAGBASNwF-L9IrneUTyzxOD5qBkJDsQ9-VrZOiY--Z0LI1RfTRVvnf7B1-TD1crv_-tixub72AMPlDN2A",
-						"type": "text"
-					},
-					{
-						"key": "token_uri",
-						"value": "https://oauth2.googleapis.com/token",
-						"type": "text"
-					},
-					{
 						"key": "client_id",
-						"value": "1092016066629-6jdh1fseu4dh5ujid0iis6soob9ep99m.apps.googleusercontent.com",
+						"value": "1092016066629-r8maka40hpbpelillfnoiq8r997ot2o7.apps.googleusercontent.com ",
 						"type": "text"
 					},
 					{
 						"key": "client_secret",
-						"value": "aXCkfQ-2rE4nsR9vZn4Dj-gX",
+						"value": "nAadNvVsVH-NvwFMguWbzz-I",
+						"type": "text"
+					},
+					{
+						"key": "refresh_token",
+						"value": "1//0gan7qUat5M4ICgYIARAAGBASNwF-L9Irnb_05BxCltsRxsaG-ySVYJFpRjJ_zFKNNSVTXJ_WHY4n4oNwSxFt3WvlweewFJBa754",
 						"type": "text"
 					},
 					{
 						"key": "scopes",
 						"value": "https://www.googleapis.com/auth/content",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "ya29.a0AfH6SMBZVZXCNeGuuQAPkblUUrJu28Ngea9XB3HxY43iOO7RRFa612XnjvUoVhLVHrWZwZAIroF-dVb4KMJUwfRnFX0SmQFD4xib58LnFFUcxc4mmDh5LkgBFjDqP3Zd851_K79vBpfQTbEWo0kCyW9jRT4o ",
+						"type": "text"
+					},
+					{
+						"key": "token_uri",
+						"value": "https://oauth2.googleapis.com/token",
 						"type": "text"
 					}
 				],
@@ -213,33 +191,33 @@
 				"method": "PATCH",
 				"header": [
 					{
-						"key": "token",
-						"value": "ya29.a0AfH6SMDnrJIvtuUQQfvuh7eZtXPbxue1zs62dpAa5PvH1jRbF19697PWZ2NAzQSnJWg2PhfqN7bBcS-Bmn6DqXD1C-FmndKG7JOenItQaLazL4ctQIgYMDGRq9p3lAfLqjee3GUAUFNvwnvM9jtSdE91fVLl",
-						"type": "text"
-					},
-					{
-						"key": "refresh_token",
-						"value": " 1//0gx_1Vv_umNCvCgYIARAAGBASNwF-L9IrneUTyzxOD5qBkJDsQ9-VrZOiY--Z0LI1RfTRVvnf7B1-TD1crv_-tixub72AMPlDN2A",
-						"type": "text"
-					},
-					{
-						"key": "token_uri",
-						"value": "https://oauth2.googleapis.com/token",
-						"type": "text"
-					},
-					{
 						"key": "client_id",
-						"value": "1092016066629-6jdh1fseu4dh5ujid0iis6soob9ep99m.apps.googleusercontent.com",
+						"value": "1092016066629-r8maka40hpbpelillfnoiq8r997ot2o7.apps.googleusercontent.com ",
 						"type": "text"
 					},
 					{
 						"key": "client_secret",
-						"value": "aXCkfQ-2rE4nsR9vZn4Dj-gX",
+						"value": "nAadNvVsVH-NvwFMguWbzz-I",
+						"type": "text"
+					},
+					{
+						"key": "refresh_token",
+						"value": "1//0gan7qUat5M4ICgYIARAAGBASNwF-L9Irnb_05BxCltsRxsaG-ySVYJFpRjJ_zFKNNSVTXJ_WHY4n4oNwSxFt3WvlweewFJBa754",
 						"type": "text"
 					},
 					{
 						"key": "scopes",
 						"value": "https://www.googleapis.com/auth/content",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "ya29.a0AfH6SMBZVZXCNeGuuQAPkblUUrJu28Ngea9XB3HxY43iOO7RRFa612XnjvUoVhLVHrWZwZAIroF-dVb4KMJUwfRnFX0SmQFD4xib58LnFFUcxc4mmDh5LkgBFjDqP3Zd851_K79vBpfQTbEWo0kCyW9jRT4o ",
+						"type": "text"
+					},
+					{
+						"key": "token_uri",
+						"value": "https://oauth2.googleapis.com/token",
 						"type": "text"
 					}
 				],
@@ -283,33 +261,33 @@
 				"method": "DELETE",
 				"header": [
 					{
-						"key": "token",
-						"value": "ya29.a0AfH6SMDnrJIvtuUQQfvuh7eZtXPbxue1zs62dpAa5PvH1jRbF19697PWZ2NAzQSnJWg2PhfqN7bBcS-Bmn6DqXD1C-FmndKG7JOenItQaLazL4ctQIgYMDGRq9p3lAfLqjee3GUAUFNvwnvM9jtSdE91fVLl",
-						"type": "text"
-					},
-					{
-						"key": "refresh_token",
-						"value": " 1//0gx_1Vv_umNCvCgYIARAAGBASNwF-L9IrneUTyzxOD5qBkJDsQ9-VrZOiY--Z0LI1RfTRVvnf7B1-TD1crv_-tixub72AMPlDN2A",
-						"type": "text"
-					},
-					{
-						"key": "token_uri",
-						"value": "https://oauth2.googleapis.com/token",
-						"type": "text"
-					},
-					{
 						"key": "client_id",
-						"value": "1092016066629-6jdh1fseu4dh5ujid0iis6soob9ep99m.apps.googleusercontent.com",
+						"value": "1092016066629-r8maka40hpbpelillfnoiq8r997ot2o7.apps.googleusercontent.com ",
 						"type": "text"
 					},
 					{
 						"key": "client_secret",
-						"value": "aXCkfQ-2rE4nsR9vZn4Dj-gX",
+						"value": "nAadNvVsVH-NvwFMguWbzz-I",
+						"type": "text"
+					},
+					{
+						"key": "refresh_token",
+						"value": "1//0gan7qUat5M4ICgYIARAAGBASNwF-L9Irnb_05BxCltsRxsaG-ySVYJFpRjJ_zFKNNSVTXJ_WHY4n4oNwSxFt3WvlweewFJBa754",
 						"type": "text"
 					},
 					{
 						"key": "scopes",
 						"value": "https://www.googleapis.com/auth/content",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "ya29.a0AfH6SMBZVZXCNeGuuQAPkblUUrJu28Ngea9XB3HxY43iOO7RRFa612XnjvUoVhLVHrWZwZAIroF-dVb4KMJUwfRnFX0SmQFD4xib58LnFFUcxc4mmDh5LkgBFjDqP3Zd851_K79vBpfQTbEWo0kCyW9jRT4o ",
+						"type": "text"
+					},
+					{
+						"key": "token_uri",
+						"value": "https://oauth2.googleapis.com/token",
 						"type": "text"
 					}
 				],
@@ -339,12 +317,12 @@
 			"response": []
 		},
 		{
-			"name": "authorize2",
+			"name": "authorize",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:5000/authorize2",
+					"raw": "http://127.0.0.1:5000/433480089/authorize2",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -354,6 +332,7 @@
 					],
 					"port": "5000",
 					"path": [
+						"433480089",
 						"authorize2"
 					]
 				}
