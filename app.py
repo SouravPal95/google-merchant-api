@@ -38,6 +38,7 @@ class Authorize(Resource):
 class ListProducts(Resource):
     def get(self, merch_id=433480089):
 
+        #print(f"from ListPRoducts: {session}")
         headers = request.headers
         if not headers.get("Refresh_Token"):
             return {
@@ -170,17 +171,20 @@ def authorize2():
         access_type="offline",
         include_granted_scopes='true'
     )
-    
+    #print(f"state from authorize2: {state}")
     session['state']=state
-    return redirect(authorization_url)
+    
+    return {"Authorization Url": authorization_url}
+    #return redirect(authorization_url)
 
 @app.route('/oauth2callback')
 def oauth2callback():
     
+    print(f"state from oauth2callback: {session.get('state')}")
     flow=Flow.from_client_secrets_file(
         'client_secrets_web.json',
         scopes=['https://www.googleapis.com/auth/content'],
-        state=session['state'],
+        state=session.get('state'),
         redirect_uri=url_for('oauth2callback', _external=True)
     )
     authorization_resp=request.url
@@ -194,12 +198,13 @@ def oauth2callback():
         'scopes': flow.credentials.scopes
     }
     session['credentials']=credentials
-      
+    #print(f"From Oauth2callback: {session}")
     #return redirect(url_for('index'))
     #return redirect(url_for('products', merch_id=session['merch_id']))
     #return redirect(api.url_for(Products, merch_id=session['merch_id']))
+    #return redirect(session.get('original_url') or url_for('index'))
     
-    return redirect(session.get('original_url') or url_for('index'))
+    return credentials
 
 api.add_resource(ListProducts, '/shop/listproducts', '/shop/<int:merch_id>/listproducts')
 api.add_resource(Product, '/shop/<int:merch_id>/product')
