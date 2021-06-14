@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "d68a451b-6d10-40d4-9353-e0477728486a",
+		"name": "google content api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "authorize",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/authorize",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"authorize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListProducts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "ya29.a0AfH6SMDnrJIvtuUQQfvuh7eZtXPbxue1zs62dpAa5PvH1jRbF19697PWZ2NAzQSnJWg2PhfqN7bBcS-Bmn6DqXD1C-FmndKG7JOenItQaLazL4ctQIgYMDGRq9p3lAfLqjee3GUAUFNvwnvM9jtSdE91fVLl",
+						"type": "text"
+					},
+					{
+						"key": "refresh_token",
+						"value": " 1//0gx_1Vv_umNCvCgYIARAAGBASNwF-L9IrneUTyzxOD5qBkJDsQ9-VrZOiY--Z0LI1RfTRVvnf7B1-TD1crv_-tixub72AMPlDN2A",
+						"type": "text"
+					},
+					{
+						"key": "token_uri",
+						"value": "https://oauth2.googleapis.com/token",
+						"type": "text"
+					},
+					{
+						"key": "client_id",
+						"value": "1092016066629-6jdh1fseu4dh5ujid0iis6soob9ep99m.apps.googleusercontent.com",
+						"type": "text"
+					},
+					{
+						"key": "client_secret",
+						"value": "aXCkfQ-2rE4nsR9vZn4Dj-gX",
+						"type": "text"
+					},
+					{
+						"key": "scopes",
+						"value": "https://www.googleapis.com/auth/content",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/shop/433480089/listproducts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"shop",
+						"433480089",
+						"listproducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "ya29.a0AfH6SMDnrJIvtuUQQfvuh7eZtXPbxue1zs62dpAa5PvH1jRbF19697PWZ2NAzQSnJWg2PhfqN7bBcS-Bmn6DqXD1C-FmndKG7JOenItQaLazL4ctQIgYMDGRq9p3lAfLqjee3GUAUFNvwnvM9jtSdE91fVLl",
+						"type": "text"
+					},
+					{
+						"key": "refresh_token",
+						"value": " 1//0gx_1Vv_umNCvCgYIARAAGBASNwF-L9IrneUTyzxOD5qBkJDsQ9-VrZOiY--Z0LI1RfTRVvnf7B1-TD1crv_-tixub72AMPlDN2A",
+						"type": "text"
+					},
+					{
+						"key": "token_uri",
+						"value": "https://oauth2.googleapis.com/token",
+						"type": "text"
+					},
+					{
+						"key": "client_id",
+						"value": "1092016066629-6jdh1fseu4dh5ujid0iis6soob9ep99m.apps.googleusercontent.com",
+						"type": "text"
+					},
+					{
+						"key": "client_secret",
+						"value": "aXCkfQ-2rE4nsR9vZn4Dj-gX",
+						"type": "text"
+					},
+					{
+						"key": "scopes",
+						"value": "https://www.googleapis.com/auth/content",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"kind\": \"content#product\",\r\n \"offerId\": \"646416464\",\r\n \"title\": \"Google Coffeeee Yellooooooooo\",\r\n \"description\": \"The Yelllllloooowww Google Tee is available in unisex sizing.\",\r\n \"link\": \"http://my.site.com/blacktee/\",\r\n \"imageLink\": \"https://shop.example.com/.../images/GGOEGXXX1100.jpg\",\r\n \"contentLanguage\": \"en\",\r\n \"targetCountry\": \"US\",\r\n \"channel\": \"online\",\r\n \"ageGroup\": \"adult\",\r\n \"availability\": \"in stock\",\r\n \"availabilityDate\": \"2019-01-25T13:00:00-08:00\",\r\n \"brand\": \"Google\",\r\n \"color\": \"black\",\r\n \"condition\": \"new\",\r\n \"gender\": \"male\",\r\n \"googleProductCategory\": \"1604\",\r\n \"gtin\": \"608802531656\",\r\n \"itemGroupId\": \"google_tee\",\r\n \"mpn\": \"608802531656\",\r\n \"price\": {\r\n  \"value\": \"21.99\",\r\n  \"currency\": \"USD\"\r\n },\r\n \"sizes\": [\r\n  \"Large\"\r\n ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/shop/433480089/product",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"shop",
+						"433480089",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "ya29.a0AfH6SMDnrJIvtuUQQfvuh7eZtXPbxue1zs62dpAa5PvH1jRbF19697PWZ2NAzQSnJWg2PhfqN7bBcS-Bmn6DqXD1C-FmndKG7JOenItQaLazL4ctQIgYMDGRq9p3lAfLqjee3GUAUFNvwnvM9jtSdE91fVLl",
+						"type": "text"
+					},
+					{
+						"key": "refresh_token",
+						"value": " 1//0gx_1Vv_umNCvCgYIARAAGBASNwF-L9IrneUTyzxOD5qBkJDsQ9-VrZOiY--Z0LI1RfTRVvnf7B1-TD1crv_-tixub72AMPlDN2A",
+						"type": "text"
+					},
+					{
+						"key": "token_uri",
+						"value": "https://oauth2.googleapis.com/token",
+						"type": "text"
+					},
+					{
+						"key": "client_id",
+						"value": "1092016066629-6jdh1fseu4dh5ujid0iis6soob9ep99m.apps.googleusercontent.com",
+						"type": "text"
+					},
+					{
+						"key": "client_secret",
+						"value": "aXCkfQ-2rE4nsR9vZn4Dj-gX",
+						"type": "text"
+					},
+					{
+						"key": "scopes",
+						"value": "https://www.googleapis.com/auth/content",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/shop/433480089/product?productId=online:en:US:646416464",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"shop",
+						"433480089",
+						"product"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "online:en:US:646416464"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "token",
+						"value": "ya29.a0AfH6SMDnrJIvtuUQQfvuh7eZtXPbxue1zs62dpAa5PvH1jRbF19697PWZ2NAzQSnJWg2PhfqN7bBcS-Bmn6DqXD1C-FmndKG7JOenItQaLazL4ctQIgYMDGRq9p3lAfLqjee3GUAUFNvwnvM9jtSdE91fVLl",
+						"type": "text"
+					},
+					{
+						"key": "refresh_token",
+						"value": " 1//0gx_1Vv_umNCvCgYIARAAGBASNwF-L9IrneUTyzxOD5qBkJDsQ9-VrZOiY--Z0LI1RfTRVvnf7B1-TD1crv_-tixub72AMPlDN2A",
+						"type": "text"
+					},
+					{
+						"key": "token_uri",
+						"value": "https://oauth2.googleapis.com/token",
+						"type": "text"
+					},
+					{
+						"key": "client_id",
+						"value": "1092016066629-6jdh1fseu4dh5ujid0iis6soob9ep99m.apps.googleusercontent.com",
+						"type": "text"
+					},
+					{
+						"key": "client_secret",
+						"value": "aXCkfQ-2rE4nsR9vZn4Dj-gX",
+						"type": "text"
+					},
+					{
+						"key": "scopes",
+						"value": "https://www.googleapis.com/auth/content",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"title\": \"Google Tee Black Limited Edition\",\r\n \"description\": \"The Limited Edition Tee is available in unisex sizing and features a retail fit.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/shop/433480089/product?productId=online:en:US:646416464",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"shop",
+						"433480089",
+						"product"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "online:en:US:646416464"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "ya29.a0AfH6SMDnrJIvtuUQQfvuh7eZtXPbxue1zs62dpAa5PvH1jRbF19697PWZ2NAzQSnJWg2PhfqN7bBcS-Bmn6DqXD1C-FmndKG7JOenItQaLazL4ctQIgYMDGRq9p3lAfLqjee3GUAUFNvwnvM9jtSdE91fVLl",
+						"type": "text"
+					},
+					{
+						"key": "refresh_token",
+						"value": " 1//0gx_1Vv_umNCvCgYIARAAGBASNwF-L9IrneUTyzxOD5qBkJDsQ9-VrZOiY--Z0LI1RfTRVvnf7B1-TD1crv_-tixub72AMPlDN2A",
+						"type": "text"
+					},
+					{
+						"key": "token_uri",
+						"value": "https://oauth2.googleapis.com/token",
+						"type": "text"
+					},
+					{
+						"key": "client_id",
+						"value": "1092016066629-6jdh1fseu4dh5ujid0iis6soob9ep99m.apps.googleusercontent.com",
+						"type": "text"
+					},
+					{
+						"key": "client_secret",
+						"value": "aXCkfQ-2rE4nsR9vZn4Dj-gX",
+						"type": "text"
+					},
+					{
+						"key": "scopes",
+						"value": "https://www.googleapis.com/auth/content",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/shop/433480089/product?productId=online:en:US:646416464",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"shop",
+						"433480089",
+						"product"
+					],
+					"query": [
+						{
+							"key": "productId",
+							"value": "online:en:US:646416464"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authorize2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/authorize2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"authorize2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
