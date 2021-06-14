@@ -1,3 +1,4 @@
 gc_env/
 __pycache__/
-*.json
+client_secrets_desk.json
+client_secrets_web.json
