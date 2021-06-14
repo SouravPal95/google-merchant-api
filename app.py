@@ -210,7 +210,7 @@ def oauth2callback():
 
 api.add_resource(ListProducts, '/shop/listproducts', '/shop/<int:merch_id>/listproducts')
 api.add_resource(Product, '/shop/<int:merch_id>/product')
-api.add_resource(Authorize, '/<int:merchant_id>/authorize2')
+api.add_resource(Authorize, '/<int:merchant_id>/authorize')
 
 if __name__=="__main__":
     app.run()
