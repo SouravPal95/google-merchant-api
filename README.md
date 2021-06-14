@@ -32,4 +32,4 @@ Authorize
 ListProducts
 Products
 ```
-At first, a get request to the `Authorize` resource is made to acquire access and refresh tokens along with other credentials in JSON format. For every other request to the remaining two resources, this credential is be passed on in the header.
+At first, a get request to the `Authorize` resource is made to acquire access and refresh tokens along with other credentials in JSON format. For every other request to the remaining two resources, this credential is be passed on in the header. A postman collection has been included in the repository named `google content api.postman_collection.json`
