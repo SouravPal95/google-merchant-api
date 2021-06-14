@@ -7,6 +7,8 @@ A stateless rest API for interacting with a google merchant account using OAuth 
 Run the following piece of code in a bash shell:
 
 ```bash
+$ git clone git@github.com:SouravPal95/google-merchant-api.git
+$ cd google-merchant-api
 $ pip install virtualenv
 $ virtualenv <Name>
 $ source <Name>/Script/activate
