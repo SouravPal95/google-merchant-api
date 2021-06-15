@@ -14,9 +14,20 @@ $ virtualenv <Name>
 $ source <Name>/Script/activate
 $ pip install -r requirements.txt
 ```
+# Creating the Database:
+
+```bash
+$ python
+```
+
+```python
+from database import Base, Engine
+Base.metadata.create_all(bind=engine)
+```
+
 # Running local server:
 
-```
+```bash
 $ flask run
 ```
 
