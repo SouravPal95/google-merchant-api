@@ -10,7 +10,6 @@ engine=create_engine(r"sqlite:///D:\Abstract Inc (Filed)\google-api\data.db",
 Base=declarative_base(bind=engine)
 
 Session=sessionmaker(bind=engine)
-session=Session()
 
 class Credential(Base):
     __tablename__="credentials"

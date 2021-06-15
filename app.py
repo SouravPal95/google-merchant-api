@@ -6,7 +6,7 @@ from flask import Flask, url_for, jsonify, request
 from flask_restful import Resource, Api
 from flask_cors import CORS
 
-from database import session, Credential
+from database import Session, Credential
 
 app=Flask(__name__)
 
@@ -14,6 +14,8 @@ app.config['SECRET_KEY']="23e01632e0d475932a8ecc3b1177bc574f9e0adbb9efd19f76f76b
 
 cors=CORS(app)
 api=Api(app)
+
+session = Session()
 
 class ListProducts(Resource):
     def get(self, merch_id=433480089):
