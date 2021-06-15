@@ -2,3 +2,4 @@ gc_env/
 __pycache__/
 client_secrets_web.json
 *.db
+scribble.py
