@@ -2,49 +2,29 @@ from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
-from flask import Flask, url_for, session, jsonify, request
+from flask import Flask, url_for, jsonify, request
 from flask_restful import Resource, Api
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+
+from database import session, Credential
 
 app=Flask(__name__)
 
 app.config['SECRET_KEY']="23e01632e0d475932a8ecc3b1177bc574f9e0adbb9efd19f76f76b4faa860f20"
-app.config['SQLALCHEMY_DATABASE_URI']=r"sqlite:///D:\Abstract Inc (Filed)\google-api\data.db"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
 cors=CORS(app)
 api=Api(app)
-db=SQLAlchemy(app)
-
-class Credential(db.Model):
-    id=db.Column(db.Integer, primary_key=True)
-    merchant_id=db.Column(db.Integer, nullable=False)
-    token=db.Column(db.String)
-    refresh_token=db.Column(db.String)
-    
-    def __repr__(self):
-        return f"Credential<merchant_id:{self.merchant_id}>"
 
 class ListProducts(Resource):
     def get(self, merch_id=433480089):
             
-        merchant=Credential.query.filter_by(merchant_id=merch_id).first()
+        merchant=session.query(Credential).filter(Credential.merchant_id==merch_id).first()
         if not merchant:
             return {
                 'message': 'Unauthorized',
             }
         
-        credentials = {
-            'token': merchant.token,
-            'refresh_token': merchant.refresh_token,
-            'token_uri': "https://oauth2.googleapis.com/token",
-            'client_id': "1092016066629-r8maka40hpbpelillfnoiq8r997ot2o7.apps.googleusercontent.com",
-            'client_secret': "nAadNvVsVH-NvwFMguWbzz-I",
-            'scopes': [
-                "https://www.googleapis.com/auth/content"
-            ]
-        } 
+        credentials = merchant.generate_credentials()
            
         credentials=Credentials(**credentials)
         with build('content', 'v2.1',
@@ -58,22 +38,13 @@ class ListProducts(Resource):
 class Product(Resource):
     def get(self, merch_id):
         
-        merchant=Credential.query.filter_by(merchant_id=merch_id).first()
+        merchant=session.query(Credential).filter(Credential.merchant_id==merch_id).first()
         if not merchant:
             return {
                 'message': 'Unauthorized',
             }
         
-        credentials = {
-            'token': merchant.token,
-            'refresh_token': merchant.refresh_token,
-            'token_uri': "https://oauth2.googleapis.com/token",
-            'client_id': "1092016066629-r8maka40hpbpelillfnoiq8r997ot2o7.apps.googleusercontent.com",
-            'client_secret': "nAadNvVsVH-NvwFMguWbzz-I",
-            'scopes': [
-                "https://www.googleapis.com/auth/content"
-            ]
-        } 
+        credentials = merchant.generate_credentials()
            
         credentials=Credentials(**credentials)
         with build('content', 'v2.1', credentials=credentials) as service:
@@ -85,22 +56,14 @@ class Product(Resource):
         return jsonify(response)    
     
     def post(self, merch_id):
-        merchant=Credential.query.filter_by(merchant_id=merch_id).first()
+        merchant=session.query(Credential).filter(Credential.merchant_id==merch_id).first()
         if not merchant:
             return {
                 'message': 'Unauthorized',
             }
         
-        credentials = {
-            'token': merchant.token,
-            'refresh_token': merchant.refresh_token,
-            'token_uri': "https://oauth2.googleapis.com/token",
-            'client_id': "1092016066629-r8maka40hpbpelillfnoiq8r997ot2o7.apps.googleusercontent.com",
-            'client_secret': "nAadNvVsVH-NvwFMguWbzz-I",
-            'scopes': [
-                "https://www.googleapis.com/auth/content"
-            ]
-        } 
+        credentials =  merchant.generate_credentials()
+        
         credentials=Credentials(**credentials)
         product=request.get_json()
         with build('content', 'v2.1', credentials=credentials) as service:
@@ -111,22 +74,14 @@ class Product(Resource):
         return jsonify(response)
     
     def patch(self, merch_id):
-        merchant=Credential.query.filter_by(merchant_id=merch_id).first()
+        merchant=session.query(Credential).filter(Credential.merchant_id==merch_id).first()
         if not merchant:
             return {
                 'message': 'Unauthorized',
             }
         
-        credentials = {
-            'token': merchant.token,
-            'refresh_token': merchant.refresh_token,
-            'token_uri': "https://oauth2.googleapis.com/token",
-            'client_id': "1092016066629-r8maka40hpbpelillfnoiq8r997ot2o7.apps.googleusercontent.com",
-            'client_secret': "nAadNvVsVH-NvwFMguWbzz-I",
-            'scopes': [
-                "https://www.googleapis.com/auth/content"
-            ]
-        } 
+        credentials = merchant.generate_credentials()
+        
         credentials=Credentials(**credentials)
         product=request.get_json()
         with build('content', 'v2.1', credentials=credentials) as service:
@@ -138,22 +93,13 @@ class Product(Resource):
         return jsonify(response)   
     
     def delete(self, merch_id):
-        merchant=Credential.query.filter_by(merchant_id=merch_id).first()
+        merchant=session.query(Credential).filter(Credential.merchant_id==merch_id).first()
         if not merchant:
             return {
                 'message': 'Unauthorized',
             }
         
-        credentials = {
-            'token': merchant.token,
-            'refresh_token': merchant.refresh_token,
-            'token_uri': "https://oauth2.googleapis.com/token",
-            'client_id': "1092016066629-r8maka40hpbpelillfnoiq8r997ot2o7.apps.googleusercontent.com",
-            'client_secret': "nAadNvVsVH-NvwFMguWbzz-I",
-            'scopes': [
-                "https://www.googleapis.com/auth/content"
-            ]
-        } 
+        credentials = merchant.generate_credentials()
            
         credentials=Credentials(**credentials)
         with build('content', 'v2.1', credentials=credentials) as service:
@@ -180,11 +126,15 @@ class Authorize(Resource):
         )
         
         merchant=Credential(merchant_id=merchant_id)
-        db.session.add(merchant)
-        db.session.commit() 
+        session.add(merchant)
+        session.commit() 
         return {
             "Authorization Url": authorization_url
         }
+
+@app.route("/")
+def index():
+    pass
 
 @app.route('/oauth2callback')
 def oauth2callback():
@@ -196,11 +146,10 @@ def oauth2callback():
     )
     authorization_resp=request.url
     flow.fetch_token(authorization_response=authorization_resp)
-    
-    merchant=Credential.query.filter_by(merchant_id=request.args.get('state')).first()
+    merchant=session.query(Credential).filter(Credential.merchant_id==request.args.get('state')).first()
     merchant.token=flow.credentials.token
     merchant.refresh_token=flow.credentials.refresh_token
-    db.session.commit()
+    session.commit()
  
     return {
         "Message":f"credentials added to db {request.args.get('state')}"

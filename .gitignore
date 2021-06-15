@@ -1,5 +1,6 @@
 gc_env/
 __pycache__/
+sample_data/
 client_secrets_web.json
 *.db
 scribble.py
