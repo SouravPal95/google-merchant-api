@@ -6,7 +6,9 @@ from flask import Flask, url_for, jsonify, request
 from flask_restful import Resource, Api
 from flask_cors import CORS
 
-from database import Session, Credential
+import internal_db
+#import external_db
+
 
 app=Flask(__name__)
 
@@ -15,12 +17,14 @@ app.config['SECRET_KEY']="23e01632e0d475932a8ecc3b1177bc574f9e0adbb9efd19f76f76b
 cors=CORS(app)
 api=Api(app)
 
-session = Session()
+internal_session = internal_db.Session()
 
 class ListProducts(Resource):
     def get(self, merch_id=433480089):
             
-        merchant=session.query(Credential).filter(Credential.merchant_id==merch_id).first()
+        merchant=(internal_session.query(internal_db.Credential)
+                  .filter(internal_db.Credential.merchant_id==merch_id)
+                  .first())
         if not merchant:
             return {
                 'message': 'Unauthorized',
@@ -40,7 +44,9 @@ class ListProducts(Resource):
 class Product(Resource):
     def get(self, merch_id):
         
-        merchant=session.query(Credential).filter(Credential.merchant_id==merch_id).first()
+        merchant=(internal_session.query(internal_db.Credential)
+                  .filter(internal_db.Credential.merchant_id==merch_id)
+                  .first())
         if not merchant:
             return {
                 'message': 'Unauthorized',
@@ -58,7 +64,9 @@ class Product(Resource):
         return jsonify(response)    
     
     def post(self, merch_id):
-        merchant=session.query(Credential).filter(Credential.merchant_id==merch_id).first()
+        merchant=(internal_session.query(internal_db.Credential)
+                  .filter(internal_db.Credential.merchant_id==merch_id)
+                  .first())
         if not merchant:
             return {
                 'message': 'Unauthorized',
@@ -76,7 +84,9 @@ class Product(Resource):
         return jsonify(response)
     
     def patch(self, merch_id):
-        merchant=session.query(Credential).filter(Credential.merchant_id==merch_id).first()
+        merchant=(internal_session.query(internal_db.Credential)
+                  .filter(internal_db.Credential.merchant_id==merch_id)
+                  .first())
         if not merchant:
             return {
                 'message': 'Unauthorized',
@@ -95,7 +105,9 @@ class Product(Resource):
         return jsonify(response)   
     
     def delete(self, merch_id):
-        merchant=session.query(Credential).filter(Credential.merchant_id==merch_id).first()
+        merchant=(internal_session.query(internal_db.Credential)
+                  .filter(internal_db.Credential.merchant_id==merch_id)
+                  .first())
         if not merchant:
             return {
                 'message': 'Unauthorized',
@@ -127,9 +139,9 @@ class Authorize(Resource):
             include_granted_scopes='true'
         )
         
-        merchant=Credential(merchant_id=merchant_id)
-        session.add(merchant)
-        session.commit() 
+        merchant=internal_db.Credential(merchant_id=merchant_id)
+        internal_session.add(merchant)
+        internal_session.commit() 
         return {
             "Authorization Url": authorization_url
         }
@@ -148,10 +160,10 @@ def oauth2callback():
     )
     authorization_resp=request.url
     flow.fetch_token(authorization_response=authorization_resp)
-    merchant=session.query(Credential).filter(Credential.merchant_id==request.args.get('state')).first()
+    merchant=internal_session.query(internal_db.Credential).filter(internal_db.Credential.merchant_id==request.args.get('state')).first()
     merchant.token=flow.credentials.token
     merchant.refresh_token=flow.credentials.refresh_token
-    session.commit()
+    internal_session.commit()
  
     return {
         "Message":f"credentials added to db {request.args.get('state')}"
