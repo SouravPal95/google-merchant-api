@@ -28,8 +28,10 @@ class ProductFromDataBase(Resource):
                              for column in test_variant.__table__.columns}
         test_product_dict={column.name: str(getattr(test_product, column.name)) 
                              for column in test_product.__table__.columns}
-        return {"test_variant": test_variant_dict,
-                "test_product": test_product_dict}
+        return {
+            "test_variant": test_variant_dict,
+            "test_product": test_product_dict
+        }
         
 
 class ListProducts(Resource):
