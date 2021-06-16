@@ -21,7 +21,7 @@ $ python
 ```
 
 ```python
-from database import Base, Engine
+from internal_db import Base, engine
 Base.metadata.create_all(bind=engine)
 ```
 
