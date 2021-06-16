@@ -161,10 +161,6 @@ class Authorize(Resource):
             "Authorization Url": authorization_url
         }
 
-@app.route("/")
-def index():
-    pass
-
 @app.route('/oauth2callback')
 def oauth2callback():
     
