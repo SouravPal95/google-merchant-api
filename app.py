@@ -160,32 +160,33 @@ class Authorize(Resource):
         return {
             "Authorization Url": authorization_url
         }
-
-@app.route('/oauth2callback')
-def oauth2callback():
     
-    flow=Flow.from_client_secrets_file(
-        'client_secrets_web.json',
-        scopes=['https://www.googleapis.com/auth/content'],
-        redirect_uri=url_for('oauth2callback', _external=True)
-    )
-    authorization_resp=request.url
-    flow.fetch_token(authorization_response=authorization_resp)
-    merchant=(internal_session.query(internal_db.Credential)
-              .filter(internal_db.Credential.merchant_id==request.args.get('state'))
-              .first())
-    merchant.token=flow.credentials.token
-    merchant.refresh_token=flow.credentials.refresh_token
-    internal_session.commit()
- 
-    return {
-        "Message":f"credentials added to db {request.args.get('state')}"
-    }
+class OAuth2CallBack(Resource):
+    def get(self):
+        
+        flow=Flow.from_client_secrets_file(
+            'client_secrets_web.json',
+            scopes=['https://www.googleapis.com/auth/content'],
+            redirect_uri=url_for('oauth2callback', _external=True)
+        )
+        authorization_resp=request.url
+        flow.fetch_token(authorization_response=authorization_resp)
+        merchant=(internal_session.query(internal_db.Credential)
+                .filter(internal_db.Credential.merchant_id==request.args.get('state'))
+                .first())
+        merchant.token=flow.credentials.token
+        merchant.refresh_token=flow.credentials.refresh_token
+        internal_session.commit()
+    
+        return {
+            "Message":f"credentials added to db {request.args.get('state')}"
+        }
 
 api.add_resource(ListProducts, '/shop/listproducts', '/shop/<int:merch_id>/listproducts')
 api.add_resource(Product, '/shop/<int:merch_id>/product')
 api.add_resource(Authorize, '/<int:merchant_id>/authorize')
 api.add_resource(ProductFromDataBase, '/<int:merchant_id>/ProductFromBase')
+api.add_resource(OAuth2CallBack, '/oauth2callback')
 
 if __name__=="__main__":
     app.run()
