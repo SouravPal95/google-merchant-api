@@ -322,7 +322,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:5000/433480089/authorize2",
+					"raw": "http://127.0.0.1:5000/433480089/authorize",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -333,7 +333,36 @@
 					"port": "5000",
 					"path": [
 						"433480089",
-						"authorize2"
+						"authorize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProductFromDataBase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/433480089/ProductFromBase?variant_id=3250",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"433480089",
+						"ProductFromBase"
+					],
+					"query": [
+						{
+							"key": "variant_id",
+							"value": "3250"
+						}
 					]
 				}
 			},
