@@ -7,7 +7,7 @@ from flask_restful import Resource, Api
 from flask_cors import CORS
 
 import internal_db
-#import external_db
+import external_db
 
 
 app=Flask(__name__)
@@ -18,6 +18,21 @@ cors=CORS(app)
 api=Api(app)
 
 internal_session = internal_db.Session()
+external_session = external_db.Session()
+
+class ProductFromDataBase(Resource):
+    def post(self, merchant_id):
+        print(merchant_id)
+        variant_id=request.args.get('variant_id')
+        test_variant = external_session.query(external_db.FiledVariants).get(variant_id)
+        test_variant_dict = {column.name: str(getattr(test_variant, column.name)) 
+                             for column in test_variant.__table__.columns}
+        test_product=test_variant.filedproducts
+        test_product_dict={column.name: str(getattr(test_product, column.name)) 
+                             for column in test_product.__table__.columns}
+        return {"test_variant": test_variant_dict,
+                "test_product": test_product_dict}
+        
 
 class ListProducts(Resource):
     def get(self, merch_id=433480089):
@@ -160,7 +175,9 @@ def oauth2callback():
     )
     authorization_resp=request.url
     flow.fetch_token(authorization_response=authorization_resp)
-    merchant=internal_session.query(internal_db.Credential).filter(internal_db.Credential.merchant_id==request.args.get('state')).first()
+    merchant=(internal_session.query(internal_db.Credential)
+              .filter(internal_db.Credential.merchant_id==request.args.get('state'))
+              .first())
     merchant.token=flow.credentials.token
     merchant.refresh_token=flow.credentials.refresh_token
     internal_session.commit()
@@ -172,7 +189,10 @@ def oauth2callback():
 api.add_resource(ListProducts, '/shop/listproducts', '/shop/<int:merch_id>/listproducts')
 api.add_resource(Product, '/shop/<int:merch_id>/product')
 api.add_resource(Authorize, '/<int:merchant_id>/authorize')
+api.add_resource(ProductFromDataBase, '/<int:merchant_id>/ProductFromBase')
 
 if __name__=="__main__":
     app.run()
+
+    
     

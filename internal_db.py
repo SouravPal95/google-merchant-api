@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 
 engine=create_engine(r"sqlite:///D:\Abstract Inc (Filed)\google-api\data.db", 
                      connect_args={'check_same_thread': False},
-                     echo=True)
+                     echo=False)
 
 Base=declarative_base(bind=engine)
 
